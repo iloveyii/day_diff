@@ -79,11 +79,7 @@ function oDate(year, month, day, hour, minute) {
     }
 
     this.getSInDaysSinceThisMonth = function() {
-        var ts = 0;
-        for(i=1; i < this.day; i++) {
-            ts = ts + ( i * 24 * 60 * 60);
-        }
-        return ts;
+        return (this.day - 1) * 24 * 60 * 60;
     }
 
     this.getSInHoursSinceThisDay = function() {
@@ -109,14 +105,31 @@ function oDate(year, month, day, hour, minute) {
     }
 }
 
-var newDate1 = new oDate(1980, 1, 1, 0, 0);
-var newDate2 = new oDate(2021, 5, 1, 0, 0);
+/*
+var newDate1 = new oDate(1970, 7, 2, 1, 0);
+var newDate2 = new oDate(2021, 5, 4, 10, 30);
 console.log("TS:::", newDate1.getTimeStamp());
 console.log("TS:::", newDate2.getTimeStamp());
 
-var d = new Date('1980/01/01 00:00:00:+0000');
-var d22 = new Date('2021/05/01 00:00:00:+0000');
+var d = new Date('1970/07/02 01:00:00:+0000');
+var d22 = new Date('2021/05/04 10:30:00:+0000');
 var ts = d.getTime() / 1000;
 var ts22 = d22.getTime() / 1000;
 console.log("TS Date:::", ts, d);
-console.log("TS Date:::", ts22, d22);
+console.log("TS Date:::", ts22, d22); */
+
+for(year = 1970; year < 2022; year ++) {
+    for(month=1; month < 2; month++) {
+        var days = new oDate(year, month, 1, 0, 0).getDaysInMonth();
+        for(day=1; day <= days; day++) {
+            var dt = new Date(year + "/" + month + "/" + day + " 00:00:00:+0000");
+            var dtTs = dt.getTime() / 1000;
+            var customDate = new oDate(year, month, day, 0, 0);
+            var customDateTs = customDate.getTimeStamp();
+            if( dtTs != customDateTs) {
+                console.log("DAY : ", year, month, day, dt, dtTs, customDateTs, customDateTs - dtTs);
+            }
+        }
+
+    }
+}
