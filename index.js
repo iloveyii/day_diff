@@ -118,18 +118,26 @@ var ts22 = d22.getTime() / 1000;
 console.log("TS Date:::", ts, d);
 console.log("TS Date:::", ts22, d22); */
 
+// Calculate for each minute of each hour of each day of each month of each year since 1070
+var minuteCount = 0;
 for(year = 1970; year < 2022; year ++) {
     for(month=1; month < 2; month++) {
         var days = new oDate(year, month, 1, 0, 0).getDaysInMonth();
         for(day=1; day <= days; day++) {
-            var dt = new Date(year + "/" + month + "/" + day + " 00:00:00:+0000");
-            var dtTs = dt.getTime() / 1000;
-            var customDate = new oDate(year, month, day, 0, 0);
-            var customDateTs = customDate.getTimeStamp();
-            if( dtTs != customDateTs) {
-                console.log("DAY : ", year, month, day, dt, dtTs, customDateTs, customDateTs - dtTs);
+            for(hour=0; hour < 24; hour++) {
+                for(minute=0; minute < 60; minute++) {
+                    var dt = new Date(year + "/" + month + "/" + day + " " + hour + ":"+ minute+":00:+0000");
+                    var dtTs = dt.getTime() / 1000;
+                    var customDate = new oDate(year, month, day, hour, minute);
+                    var customDateTs = customDate.getTimeStamp();
+                    if( dtTs != customDateTs) {
+                        console.log("DAY : ", year, month, day, dt, dtTs, customDateTs, customDateTs - dtTs);
+                    }
+                    minuteCount++;
+                }
             }
         }
-
     }
 }
+
+console.log("minuteCount : ", minuteCount);
