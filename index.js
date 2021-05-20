@@ -33,18 +33,12 @@ function getDaysDiff(date1, date2) {
     return Math.round(diffInDays);
 }
 
+/*
 const d1 = "2021/05/19 22:00";
 const d2 = "2021/05/20 10:00";
 const daysDiff = getDaysDiff(d1, d2);
-console.log("Difference in days :", daysDiff);
+console.log("Difference in days :", daysDiff); */
 
-var dateObject = {
-    year: 0,
-    month: 0,
-    day: 0,
-    hour: 0,
-    minute: 0
-}
 
 function oDate(year, month, day, hour, minute) {
     this.year = year;
@@ -52,15 +46,24 @@ function oDate(year, month, day, hour, minute) {
     this.day = day;
     this.hour = hour;
     this.minute = minute;
+
     this.getDaysDiff = function(oDate2) {
-        console.log("Diff in days: ", this.getTimeStamp());
+        var ts1 = this.getTimeStamp();
+        var ts2 = oDate2.getTimeStamp();
+        if( ts1 > ts2) {
+            return (ts1 - ts2) / 86400;
+        } else {
+            return (ts2 - ts1) / 86400;
+        }
     }
+
     this.getTimeStamp = function() {
          var ts = this.getSInYearsSince1970() + this.getSInMonthSinceStartOfThisYear() 
                 + this.getSInDaysSinceThisMonth() + this.getSInHoursSinceThisDay()
                 + this.getSInMinutesSinceThisHour();
         return ts;
     }
+
     this.getSInYearsSince1970 = function() {
         var ts = 0;
         for(var i = 1970; i < this.year; i++) {
@@ -70,6 +73,7 @@ function oDate(year, month, day, hour, minute) {
         }
         return ts;
     }
+
     this.getSInMonthSinceStartOfThisYear = function() {
         var ts = 0;
         for(i=1; i < this.month; i++) {
@@ -94,6 +98,7 @@ function oDate(year, month, day, hour, minute) {
         var y = year ? year : this.year;
         return ((y % 4 === 0 && y % 100 > 0) || y %400 == 0) ? 366 : 365;
     }
+
     this.getDaysInMonth = function(year, month) {
         if(month == 2) {
             return ((year % 4 === 0 && year % 100 > 0) || year %400 == 0) ? 29 : 28; // Leap ?
@@ -120,7 +125,7 @@ console.log("TS Date:::", ts22, d22); */
 
 // Calculate for each minute of each hour of each day of each month of each year since 1970
 var minuteCount = 0;
-for(year = 1970; year < 2022; year ++) {
+for(year = 1970; year < 2022; year++) {
     for(month=1; month < 2; month++) {
         var days = new oDate(year, month, 1, 0, 0).getDaysInMonth();
         for(day=1; day <= days; day++) {
@@ -130,7 +135,7 @@ for(year = 1970; year < 2022; year ++) {
                     var dtTs = dt.getTime() / 1000;
                     var customDate = new oDate(year, month, day, hour, minute);
                     var customDateTs = customDate.getTimeStamp();
-                    if( dtTs != customDateTs) {
+                    if(dtTs != customDateTs) {
                         console.log("DAY : ", year, month, day, dt, dtTs, customDateTs, customDateTs - dtTs);
                     }
                     minuteCount++;
@@ -141,3 +146,7 @@ for(year = 1970; year < 2022; year ++) {
 }
 
 console.log("minuteCount : ", minuteCount);
+
+var newDate1 = new oDate(1970, 1, 1, 0, 0);
+var newDate2 = new oDate(2021, 5, 21, 0, 0);
+console.log("DIFF ::", newDate1.getDaysDiff(newDate2));
