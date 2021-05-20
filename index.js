@@ -33,11 +33,11 @@ function getDaysDiff(date1, date2) {
     return Math.round(diffInDays);
 }
 
-/*
-const d1 = "2021/05/19 22:00";
-const d2 = "2021/05/20 10:00";
+
+const d1 = "1970/01/01 00:00:00:+0000";
+const d2 = "2021/05/21 00:00:00:+0000";
 const daysDiff = getDaysDiff(d1, d2);
-console.log("Difference in days :", daysDiff); */
+console.log("METHOD 1:", daysDiff); 
 
 
 function oDate(year, month, day, hour, minute) {
@@ -110,43 +110,7 @@ function oDate(year, month, day, hour, minute) {
     }
 }
 
-/*
-var newDate1 = new oDate(1970, 7, 2, 1, 0);
-var newDate2 = new oDate(2021, 5, 4, 10, 30);
-console.log("TS:::", newDate1.getTimeStamp());
-console.log("TS:::", newDate2.getTimeStamp());
-
-var d = new Date('1970/07/02 01:00:00:+0000');
-var d22 = new Date('2021/05/04 10:30:00:+0000');
-var ts = d.getTime() / 1000;
-var ts22 = d22.getTime() / 1000;
-console.log("TS Date:::", ts, d);
-console.log("TS Date:::", ts22, d22); */
-
-// Calculate for each minute of each hour of each day of each month of each year since 1970
-var minuteCount = 0;
-for(year = 1970; year < 2022; year++) {
-    for(month=1; month < 2; month++) {
-        var days = new oDate(year, month, 1, 0, 0).getDaysInMonth();
-        for(day=1; day <= days; day++) {
-            for(hour=0; hour < 24; hour++) {
-                for(minute=0; minute < 60; minute++) {
-                    var dt = new Date(year + "/" + month + "/" + day + " " + hour + ":"+ minute+":00:+0000");
-                    var dtTs = dt.getTime() / 1000;
-                    var customDate = new oDate(year, month, day, hour, minute);
-                    var customDateTs = customDate.getTimeStamp();
-                    if(dtTs != customDateTs) {
-                        console.log("DAY : ", year, month, day, dt, dtTs, customDateTs, customDateTs - dtTs);
-                    }
-                    minuteCount++;
-                }
-            }
-        }
-    }
-}
-
-console.log("minuteCount : ", minuteCount);
 
 var newDate1 = new oDate(1970, 1, 1, 0, 0);
 var newDate2 = new oDate(2021, 5, 21, 0, 0);
-console.log("DIFF ::", newDate1.getDaysDiff(newDate2));
+console.log("METHOD 2:", newDate1.getDaysDiff(newDate2));
