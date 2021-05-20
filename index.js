@@ -110,11 +110,13 @@ function oDate(year, month, day, hour, minute) {
 }
 
 var newDate1 = new oDate(1980, 1, 1, 0, 0);
-var newDate2 = new oDate(2021, 5, 20, 23, 0);
+var newDate2 = new oDate(2021, 5, 1, 0, 0);
 console.log("TS:::", newDate1.getTimeStamp());
 console.log("TS:::", newDate2.getTimeStamp());
 
-var d11 = new Date('2021/05/20 23:00:00:+0200');
 var d = new Date('1980/01/01 00:00:00:+0000');
+var d22 = new Date('2021/05/01 00:00:00:+0000');
 var ts = d.getTime() / 1000;
+var ts22 = d22.getTime() / 1000;
 console.log("TS Date:::", ts, d);
+console.log("TS Date:::", ts22, d22);
