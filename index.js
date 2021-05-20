@@ -118,7 +118,7 @@ var ts22 = d22.getTime() / 1000;
 console.log("TS Date:::", ts, d);
 console.log("TS Date:::", ts22, d22); */
 
-// Calculate for each minute of each hour of each day of each month of each year since 1070
+// Calculate for each minute of each hour of each day of each month of each year since 1970
 var minuteCount = 0;
 for(year = 1970; year < 2022; year ++) {
     for(month=1; month < 2; month++) {
