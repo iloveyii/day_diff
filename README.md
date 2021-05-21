@@ -1,6 +1,9 @@
 Date Difference
 =============
 
+- Please write a program using JavaScript that can calculate the number of days in-between two given dates. 
+- You are not allowed to use any built in date/time/calendar functionality.
+
 # Run
 - Git clone the repository `git clone https://github.com/iloveyii/day_diff.git`
 - CD to directory and install dependencies `npm i`
