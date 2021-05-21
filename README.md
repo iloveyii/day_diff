@@ -10,6 +10,7 @@ Date Difference
 # How to use in code
 - Create two object s
 ```
+var oDate = require("./index");
 //                    year month day hour minute
 var date1 = new oDate(1960, 1, 1, 0, 0);
 var date2 = new oDate(2021, 5, 21, 0, 0);
