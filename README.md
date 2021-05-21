@@ -21,6 +21,7 @@ var date2 = new oDate(2021, 5, 21, 0, 0);
 - And then call the function getDaysDiff as below
 ```
 console.log("Number of days:", date2.getDaysDiff(date1);
+// prints 22421
 ```
 
 
