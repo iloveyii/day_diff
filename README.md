@@ -1,7 +1,11 @@
 Date Difference
 =============
 
-# How to use
+# Run
+- Git clone the repository `git clone https://github.com/iloveyii/day_diff.git`
+- CD to directory and `npm start`
+
+# How to use in code
 - Create two object s
 ```
 //                    year month day hour minute
