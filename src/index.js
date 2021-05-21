@@ -7,11 +7,11 @@
 
  
 /**
- * The numbe of seconds since REFEREMCE_YEAR is the timestamp
+ * The numbe of seconds since REFERENCE_YEAR is the timestamp
  * Values can be 1, 1900, 1970 etc
  * The smaller its value, the more older dates we can calculate 
  */
-var REFEREMCE_YEAR = 1;
+var REFERENCE_YEAR = 1;
 
 function oDate(year, month, day, hour, minute) {
     this.year = year;
@@ -41,7 +41,7 @@ function oDate(year, month, day, hour, minute) {
     }
 
     /**
-     * The number of seconds elapsed since REFEREMCE_YEAR to the given date
+     * The number of seconds elapsed since REFERENCE_YEAR to the given date
      * @returns seconds
      */
     this.getTimeStamp = function() {
@@ -52,12 +52,12 @@ function oDate(year, month, day, hour, minute) {
     }
 
     /**
-     * Get timestamp for the year difference (REFEREMCE_YEAR - given year)
+     * Get timestamp for the year difference (REFERENCE_YEAR - given year)
      * @returns seconds
      */
     this.getSInYearsSinceRefYear = function() {
         var ts = 0;
-        for(var i = REFEREMCE_YEAR; i < this.year; i++) {
+        for(var i = REFERENCE_YEAR; i < this.year; i++) {
             var days = this.getDaysInYear(i);
             var s = days * 24 * 60 * 60;
             ts = ts + s;
