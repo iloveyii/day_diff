@@ -26,13 +26,18 @@ function oDate(year, month, day, hour, minute) {
      * @returns 
      */
     this.getDaysDiff = function(oDate2) {
-        var ts1 = this.getTimeStamp();
-        var ts2 = oDate2.getTimeStamp();
-        if( ts1 > ts2) {
-            return (ts1 - ts2) / 86400;
+        if(oDate2 instanceof oDate) {
+            var ts1 = this.getTimeStamp();
+            var ts2 = oDate2.getTimeStamp();
+            if( ts1 > ts2) {
+                return (ts1 - ts2) / 86400;
+            } else {
+                return (ts2 - ts1) / 86400;
+            }
         } else {
-            return (ts2 - ts1) / 86400;
+            throw Error("should be instance of oDate");
         }
+        
     }
 
     /**
