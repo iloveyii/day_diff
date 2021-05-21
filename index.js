@@ -39,6 +39,7 @@ const d2 = "2021/05/21 00:00:00:+0000";
 const daysDiff = getDaysDiff(d1, d2);
 console.log("METHOD 1:", daysDiff); 
 
+const REFEREMCE_YEAR = 1900;
 
 function oDate(year, month, day, hour, minute) {
     this.year = year;
@@ -58,15 +59,15 @@ function oDate(year, month, day, hour, minute) {
     }
 
     this.getTimeStamp = function() {
-         var ts = this.getSInYearsSince1970() + this.getSInMonthSinceStartOfThisYear() 
+         var ts = this.getSInYearsSinceRefYear() + this.getSInMonthSinceStartOfThisYear() 
                 + this.getSInDaysSinceThisMonth() + this.getSInHoursSinceThisDay()
                 + this.getSInMinutesSinceThisHour();
         return ts;
     }
 
-    this.getSInYearsSince1970 = function() {
+    this.getSInYearsSinceRefYear = function() {
         var ts = 0;
-        for(var i = 1970; i < this.year; i++) {
+        for(var i = REFEREMCE_YEAR; i < this.year; i++) {
             var days = this.getDaysInYear(i);
             var s = days * 24 * 60 * 60;
             ts = ts + s;
@@ -111,6 +112,6 @@ function oDate(year, month, day, hour, minute) {
 }
 
 
-var newDate1 = new oDate(1970, 1, 1, 0, 0);
+var newDate1 = new oDate(1960, 1, 1, 0, 0);
 var newDate2 = new oDate(2021, 5, 21, 0, 0);
 console.log("METHOD 2:", newDate1.getDaysDiff(newDate2));
