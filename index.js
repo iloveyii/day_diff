@@ -34,7 +34,7 @@ function getDaysDiff(date1, date2) {
 }
 
 
-const d1 = "1970/01/01 00:00:00:+0000";
+const d1 = "1960/01/01 00:00:00:+0000";
 const d2 = "2021/05/21 00:00:00:+0000";
 const daysDiff = getDaysDiff(d1, d2);
 console.log("METHOD 1:", daysDiff); 
